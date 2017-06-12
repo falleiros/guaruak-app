@@ -1,0 +1,49 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="./guaruak-termo.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="guaruak-lista-termos">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+    </style>
+
+    <firebase-document
+      id="db"
+      path="/termos"
+      data="{{termos}}">
+    </firebase-document>
+
+    <div class="card">
+      <h1>Termos</h1>
+      
+      <template is="dom-repeat" items="[[_termos(termos)]]" as="termo">
+        <guaruak-termo pt-br="[[termo.pt-br]]" gua="[[termo.gua]]"></guaruak-termo>
+      </template>      
+    </div>
+  </template>
+
+  <script>
+    class GuaruakListaTermos extends Polymer.Element {
+      static get is() { return 'guaruak-lista-termos'; }
+
+      static get properties(){
+        return {
+          termos: {
+            type: Array
+          }
+        }
+      }
+
+      _termos(termos){
+        return Object.keys(termos).map(key => { return termos[key]});
+      }
+    }
+
+    window.customElements.define(GuaruakListaTermos.is, GuaruakListaTermos);
+  </script>
+</dom-module>

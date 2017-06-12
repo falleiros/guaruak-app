@@ -1,0 +1,57 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="guaruak-termo">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      .secundario{
+          color: rgba(0,0,0,0,4);
+      }
+    </style>
+    <div>
+        <div class="primario">[[pt-br]]<br/></div>
+        <div class="secundario">[[gua]]<br/></div>
+    </div>
+
+    <div>
+      <audio src="" controls></audio>
+    </div>
+   
+      
+    </div>
+  </template>
+
+  <script>
+    class GuaruakTermo extends Polymer.Element {
+      static get is() { return 'guaruak-termo'; }
+
+      static get properties(){
+        return {
+          'pt-br': {
+            type: String
+          },
+          'gua': {
+            type: String
+          },
+        }
+      }
+    }
+
+    window.customElements.define(GuaruakTermo.is, GuaruakTermo);
+  </script>
+</dom-module>
